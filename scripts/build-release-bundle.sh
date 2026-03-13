@@ -7,24 +7,34 @@ cd "$ROOT_DIR"
 APP_NAME="Clipboard History"
 EXECUTABLE_NAME="ClipboardHistoryApp"
 BUNDLE_ID="com.clipboard.history"
-BUILD_DIR="$ROOT_DIR/.build/arm64-apple-macosx/release"
+ARM64_BUILD_DIR="$ROOT_DIR/.build/arm64-apple-macosx/release"
+X86_64_BUILD_DIR="$ROOT_DIR/.build/x86_64-apple-macosx/release"
 DIST_DIR="$ROOT_DIR/dist"
 APP_DIR="$DIST_DIR/$APP_NAME.app"
 ZIP_PATH="$DIST_DIR/Clipboard-History-macOS.zip"
 ICONSET_SRC="$ROOT_DIR/Sources/ClipboardHistoryApp/Resources/Assets.xcassets/AppIcon.appiconset"
 ICONSET_TMP="/tmp/clipboard-history.iconset"
 ICON_ICNS_TMP="/tmp/ClipboardHistory.icns"
-RESOURCE_BUNDLE="$BUILD_DIR/ClipboardHistory_ClipboardHistoryApp.bundle"
+RESOURCE_BUNDLE="$ARM64_BUILD_DIR/ClipboardHistory_ClipboardHistoryApp.bundle"
+UNIVERSAL_BINARY_TMP="$DIST_DIR/$EXECUTABLE_NAME-universal"
 
-echo "Building release binary..."
-swift build -c release
+echo "Building arm64 release binary..."
+swift build --triple arm64-apple-macosx14.0 -c release
+
+echo "Building x86_64 release binary..."
+swift build --triple x86_64-apple-macosx14.0 -c release
 
 echo "Creating app bundle..."
-rm -rf "$APP_DIR" "$ZIP_PATH"
+rm -rf "$APP_DIR" "$ZIP_PATH" "$UNIVERSAL_BINARY_TMP"
 mkdir -p "$APP_DIR/Contents/MacOS"
 mkdir -p "$APP_DIR/Contents/Resources"
 
-cp "$BUILD_DIR/$EXECUTABLE_NAME" "$APP_DIR/Contents/MacOS/$EXECUTABLE_NAME"
+lipo -create \
+  "$ARM64_BUILD_DIR/$EXECUTABLE_NAME" \
+  "$X86_64_BUILD_DIR/$EXECUTABLE_NAME" \
+  -output "$UNIVERSAL_BINARY_TMP"
+
+cp "$UNIVERSAL_BINARY_TMP" "$APP_DIR/Contents/MacOS/$EXECUTABLE_NAME"
 chmod +x "$APP_DIR/Contents/MacOS/$EXECUTABLE_NAME"
 
 if [ -d "$RESOURCE_BUNDLE" ]; then
@@ -75,6 +85,9 @@ cat > "$APP_DIR/Contents/Info.plist" <<EOF
 EOF
 
 codesign --force --deep --sign - "$APP_DIR"
+
+echo "Universal binary architectures:"
+lipo -archs "$APP_DIR/Contents/MacOS/$EXECUTABLE_NAME"
 
 echo "Creating release archive..."
 /usr/bin/ditto -c -k --sequesterRsrc --keepParent "$APP_DIR" "$ZIP_PATH"
