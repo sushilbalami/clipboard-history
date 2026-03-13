@@ -1,0 +1,70 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-grad" x1="96" y1="64" x2="928" y2="960" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0E2A33"/>
+      <stop offset="0.5" stop-color="#1E3442"/>
+      <stop offset="1" stop-color="#0F1E2C"/>
+    </linearGradient>
+    <radialGradient id="orb-grad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(760 210) rotate(136) scale(710 644)">
+      <stop offset="0" stop-color="#9FF6FF" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#9FF6FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="glass-main" x1="280" y1="180" x2="700" y2="820" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#E8FDFF" stop-opacity="0.42"/>
+      <stop offset="0.5" stop-color="#C0EEFF" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#89D8FF" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="glass-inner" x1="338" y1="272" x2="686" y2="760" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F1FFFF" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#D8F4FF" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="line-grad" x1="378" y1="432" x2="654" y2="642" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#E4FCFF" stop-opacity="0.98"/>
+      <stop offset="1" stop-color="#91E5FF" stop-opacity="0.8"/>
+    </linearGradient>
+    <filter id="shadow" x="170" y="112" width="684" height="800" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="24"/>
+      <feGaussianBlur stdDeviation="34"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.01 0 0 0 0 0.09 0 0 0 0 0.12 0 0 0 0.46 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+    <filter id="glow" x="312" y="374" width="408" height="312" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="14" result="effect1_foregroundBlur_1_1"/>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="1024" height="1024" rx="220" fill="url(#bg-grad)"/>
+  <rect x="0" y="0" width="1024" height="1024" rx="220" fill="url(#orb-grad)"/>
+  <rect x="0" y="0" width="1024" height="1024" rx="220" stroke="white" stroke-opacity="0.15"/>
+
+  <g filter="url(#shadow)">
+    <rect x="238" y="178" width="548" height="676" rx="132" fill="url(#glass-main)"/>
+    <rect x="238.5" y="178.5" width="547" height="675" rx="131.5" stroke="white" stroke-opacity="0.42"/>
+
+    <rect x="322" y="264" width="380" height="516" rx="86" fill="url(#glass-inner)" fill-opacity="0.58"/>
+    <rect x="322.5" y="264.5" width="379" height="515" rx="85.5" stroke="white" stroke-opacity="0.55"/>
+
+    <rect x="404" y="156" width="216" height="138" rx="58" fill="url(#glass-inner)" fill-opacity="0.7"/>
+    <rect x="404.5" y="156.5" width="215" height="137" rx="57.5" stroke="white" stroke-opacity="0.6"/>
+  </g>
+
+  <rect x="356" y="398" width="314" height="36" rx="18" fill="url(#line-grad)" fill-opacity="0.94"/>
+  <rect x="356" y="486" width="278" height="36" rx="18" fill="url(#line-grad)" fill-opacity="0.84"/>
+  <rect x="356" y="574" width="234" height="36" rx="18" fill="url(#line-grad)" fill-opacity="0.74"/>
+
+  <g filter="url(#glow)">
+    <path d="M661 627C661 662.5 632.5 691 597 691C561.5 691 533 662.5 533 627C533 591.5 561.5 563 597 563C632.5 563 661 591.5 661 627Z" fill="#BAF4FF" fill-opacity="0.56"/>
+  </g>
+  <path d="M653.8 619.4C653.8 654.3 625.4 682.7 590.5 682.7C555.6 682.7 527.2 654.3 527.2 619.4C527.2 584.5 555.6 556.1 590.5 556.1C625.4 556.1 653.8 584.5 653.8 619.4Z" fill="#EAFDFF" fill-opacity="0.9"/>
+  <path d="M632.4 619.4C632.4 642.6 613.6 661.4 590.5 661.4C567.3 661.4 548.5 642.6 548.5 619.4C548.5 596.3 567.3 577.5 590.5 577.5C613.6 577.5 632.4 596.3 632.4 619.4Z" fill="#0F2434" fill-opacity="0.45"/>
+  <path d="M571.5 618.9L587.7 635.1L617.9 604.9" stroke="#C3F6FF" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <path d="M305 214C387 201 451 182 515 133C579 182 643 201 725 214" stroke="white" stroke-opacity="0.26" stroke-width="3" stroke-linecap="round"/>
+  <path d="M349 307C426 289 468 256 512 214C556 256 598 289 675 307" stroke="white" stroke-opacity="0.18" stroke-width="2.6" stroke-linecap="round"/>
+</svg>

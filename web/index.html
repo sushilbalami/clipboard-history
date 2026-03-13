@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clipboard History for macOS</title>
+    <meta
+      name="description"
+      content="Install Clipboard History for macOS. A glassy menu bar clipboard manager with search, pinning, launch at login, and keyboard-first paste flow."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="ambient ambient-one"></div>
+      <div class="ambient ambient-two"></div>
+      <div class="grain"></div>
+
+      <header class="topbar glass-panel">
+        <div class="brand-lockup">
+          <img src="./assets/clipboard-history-logo.svg" alt="Clipboard History logo" class="brand-mark" />
+          <div>
+            <p class="eyebrow">macOS Utility</p>
+            <p class="brand-name">Clipboard History</p>
+          </div>
+        </div>
+        <a href="#install" class="nav-pill">Install on Mac</a>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-copy">
+            <div class="hero-badge glass-panel">
+              <span class="live-dot"></span>
+              Built for macOS 14+ menu bar workflows
+            </div>
+            <h1>Recall any copy, then paste it back in one glass-smooth motion.</h1>
+            <p class="hero-text">
+              Clipboard History sits in the menu bar, remembers your clipboard, and brings back recent items with a global shortcut,
+              instant search, and optional auto-paste into the app you were just using.
+            </p>
+            <div class="hero-actions">
+              <a href="#install" class="button button-primary">Install for macOS</a>
+              <button class="button button-secondary" id="copyInstallCommand" type="button">Copy install command</button>
+            </div>
+            <p class="hero-note">Runs as a background app in <code>/Applications/Clipboard History.app</code>.</p>
+          </div>
+
+          <div class="hero-demo">
+            <article class="window-card glass-panel floating-card main-window">
+              <div class="traffic-lights">
+                <span class="traffic red"></span>
+                <span class="traffic yellow"></span>
+                <span class="traffic green"></span>
+              </div>
+              <div class="window-header">
+                <span>Clipboard History</span>
+                <span class="header-muted">⌘⇧V to open</span>
+              </div>
+              <div class="search-bar glass-inset">Search clipboard history</div>
+              <div class="history-list">
+                <div class="history-row active glass-inset">
+                  <div>
+                    <strong>Release notes draft for macOS installer</strong>
+                    <span>Notes · 10:42 AM</span>
+                  </div>
+                  <b>Paste</b>
+                </div>
+                <div class="history-row glass-inset">
+                  <div>
+                    <strong>brew install swiftformat</strong>
+                    <span>Terminal · 10:38 AM</span>
+                  </div>
+                  <b>Copy</b>
+                </div>
+                <div class="history-row glass-inset">
+                  <div>
+                    <strong>Accessibility permission is required for auto-paste</strong>
+                    <span>Settings · 10:17 AM</span>
+                  </div>
+                  <b>Pin</b>
+                </div>
+              </div>
+            </article>
+
+            <article class="metric-card glass-panel floating-card side-card side-card-top">
+              <p class="metric-label">Keyboard-first</p>
+              <p class="metric-value">Search, pick, return</p>
+              <p class="metric-copy">Use your global shortcut, arrow through history, and hit return to paste or copy.</p>
+            </article>
+
+            <article class="metric-card glass-panel floating-card side-card side-card-bottom">
+              <p class="metric-label">Native setup</p>
+              <p class="metric-value">Install script included</p>
+              <p class="metric-copy">Builds the Swift app, creates the app bundle, and installs it into Applications.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="feature-grid">
+          <article class="feature glass-panel">
+            <p class="section-kicker">What it does</p>
+            <h2>Built for people who live on copy and paste.</h2>
+            <ul class="feature-list">
+              <li>Global shortcut to open history from anywhere</li>
+              <li>Searchable clipboard list with timestamps and source apps</li>
+              <li>One-tap pin, delete, or copy actions</li>
+              <li>Optional auto-paste flow with Accessibility permission</li>
+              <li>Launch at login and adjustable history size</li>
+            </ul>
+          </article>
+
+          <article class="feature glass-panel specs-card">
+            <p class="section-kicker">System</p>
+            <h2>macOS-ready by design.</h2>
+            <div class="spec-row">
+              <span>Platform</span>
+              <strong>macOS 14.0+</strong>
+            </div>
+            <div class="spec-row">
+              <span>Install target</span>
+              <strong>/Applications</strong>
+            </div>
+            <div class="spec-row">
+              <span>Built with</span>
+              <strong>Swift + AppKit + SwiftUI</strong>
+            </div>
+            <div class="spec-row">
+              <span>Permission</span>
+              <strong>Accessibility for auto-paste</strong>
+            </div>
+          </article>
+        </section>
+
+        <section class="install-section glass-panel" id="install">
+          <div class="install-copy">
+            <p class="section-kicker">Install</p>
+            <h2>Install the app on your Mac in one command.</h2>
+            <p>
+              After cloning or downloading this project, run the installer from the repository root. The script builds a release binary,
+              creates the app bundle, and copies it into your Applications folder.
+            </p>
+          </div>
+
+          <div class="install-card glass-inset">
+            <div class="terminal-head">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <pre><code id="installCommand">./scripts/install-app.sh</code></pre>
+            <button class="button button-primary wide" id="copyInstallCommandAlt" type="button">Copy command</button>
+          </div>
+
+          <div class="steps-grid">
+            <article class="step glass-inset">
+              <span class="step-index">01</span>
+              <h3>Prepare macOS</h3>
+              <p>Use a Mac running macOS 14 or later with Xcode Command Line Tools available for Swift builds.</p>
+            </article>
+            <article class="step glass-inset">
+              <span class="step-index">02</span>
+              <h3>Run installer</h3>
+              <p>Execute <code>./scripts/install-app.sh</code> from the project root to build and install the app.</p>
+            </article>
+            <article class="step glass-inset">
+              <span class="step-index">03</span>
+              <h3>Grant permission</h3>
+              <p>Open the app, enable Accessibility if you want auto-paste, and set your preferred global shortcut.</p>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer glass-panel">
+        <p>Clipboard History for macOS</p>
+        <p>Designed as a native-feeling landing page with layered glass, restrained motion, and a direct install path.</p>
+        <p>© <span id="year"></span></p>
+      </footer>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
