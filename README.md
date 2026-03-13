@@ -113,17 +113,3 @@ Release pipeline behavior:
 2. Packages the app as `Clipboard-History-macOS.zip`
 3. Creates a GitHub Release
 4. Marks the newest release as the latest release
-
-Current packaging is unsigned/ad-hoc signed for bundling, so macOS may warn on first launch. If you want production distribution, add Apple signing and notarization next.
-
-## Landing Page
-
-The `web` directory contains the landing page for the app download flow.
-
-It now points users to the latest GitHub release ZIP and keeps the source install command as a secondary/manual option.
-
-Main files:
-
-- [web/index.html](/Users/sushil_balami/Documents/Projects/Personal%20Projects/clipboard-history/web/index.html)
-- [web/styles.css](/Users/sushil_balami/Documents/Projects/Personal%20Projects/clipboard-history/web/styles.css)
-- [web/script.js](/Users/sushil_balami/Documents/Projects/Personal%20Projects/clipboard-history/web/script.js)
