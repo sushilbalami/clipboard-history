@@ -30,7 +30,7 @@
             <p class="brand-name">Clipboard History</p>
           </div>
         </div>
-        <a href="https://github.com/sushilbalami/clipboard-history/releases/latest/download/Clipboard-History-macOS.zip" class="nav-pill" id="navDownloadLatest">Download Latest</a>
+        <button class="nav-pill" id="navDownloadLatest" type="button">Download Latest</button>
       </header>
 
       <main>
@@ -46,16 +46,8 @@
               instant search, and optional auto-paste into the app you were just using.
             </p>
             <div class="hero-actions">
-              <a
-                href="https://github.com/sushilbalami/clipboard-history/releases/latest/download/Clipboard-History-macOS.zip"
-                class="button button-primary"
-                id="downloadLatestHero"
-              >Download for macOS</a>
-              <a
-                href="https://github.com/sushilbalami/clipboard-history/releases/latest"
-                class="button button-secondary"
-                id="viewLatestRelease"
-              >View latest release</a>
+              <button class="button button-primary" id="downloadLatestHero" type="button">Download for macOS</button>
+              <button class="button button-secondary" id="copyDownloadLinkHero" type="button">Copy release link</button>
             </div>
             <p class="hero-note">Downloads the latest GitHub release ZIP and installs as <code>Clipboard History.app</code>.</p>
           </div>
@@ -162,13 +154,12 @@
               <span></span>
               <span></span>
             </div>
-            <pre><code id="downloadCommand">https://github.com/sushilbalami/clipboard-history/releases/latest/download/Clipboard-History-macOS.zip</code></pre>
+            <div class="release-action-copy">
+              <p class="manual-title">Latest GitHub release</p>
+              <p class="release-note">Copies the direct ZIP download, then opens it in a new tab.</p>
+            </div>
             <div class="install-actions">
-              <a
-                href="https://github.com/sushilbalami/clipboard-history/releases/latest/download/Clipboard-History-macOS.zip"
-                class="button button-primary wide"
-                id="downloadLatestInstall"
-              >Download latest build</a>
+              <button class="button button-primary wide" id="downloadLatestInstall" type="button">Copy and download latest build</button>
               <button class="button button-secondary wide" id="copyDownloadLink" type="button">Copy release link</button>
             </div>
           </div>

@@ -64,6 +64,20 @@ pre {
   padding: 24px;
 }
 
+main,
+.hero-copy,
+.hero-demo,
+.feature,
+.specs-card,
+.install-copy,
+.install-card,
+.step,
+.manual-build,
+.manual-inline,
+.manual-inline > * {
+  min-width: 0;
+}
+
 .ambient {
   position: fixed;
   border-radius: 999px;
@@ -265,6 +279,10 @@ h1 {
   margin: 28px 0 18px;
 }
 
+.hero-actions .button {
+  flex: 0 1 auto;
+}
+
 .button {
   display: inline-flex;
   justify-content: center;
@@ -279,6 +297,10 @@ h1 {
 .button:hover,
 .nav-pill:hover {
   transform: translateY(-1px);
+}
+
+.nav-pill {
+  appearance: none;
 }
 
 .button-primary {
@@ -357,6 +379,7 @@ h1 {
   align-items: center;
   margin-bottom: 14px;
   font-size: 1.1rem;
+  flex-wrap: wrap;
 }
 
 .header-muted {
@@ -383,6 +406,10 @@ h1 {
   gap: 16px;
   align-items: center;
   padding: 14px 16px;
+}
+
+.history-row > div {
+  min-width: 0;
 }
 
 .history-row strong,
@@ -463,11 +490,27 @@ h2 {
   display: grid;
   grid-template-columns: 1.05fr 0.9fr;
   gap: 24px;
+  align-items: start;
   margin-bottom: 24px;
+}
+
+.install-copy {
+  max-width: 34rem;
 }
 
 .install-card {
   padding: 18px;
+  align-self: start;
+}
+
+.release-action-copy {
+  padding: 8px 2px 18px;
+}
+
+.release-note {
+  margin: 6px 0 0;
+  color: var(--muted);
+  line-height: 1.6;
 }
 
 .install-actions {
@@ -492,6 +535,9 @@ pre {
   margin: 0 0 18px;
   padding: 18px;
   overflow-x: auto;
+  max-width: 100%;
+  white-space: pre-wrap;
+  word-break: break-word;
   border-radius: 18px;
   background: rgba(10, 22, 38, 0.9);
   color: #d7ebff;
@@ -548,6 +594,20 @@ h3 {
   font-weight: 700;
 }
 
+@media (max-width: 1280px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(420px, 0.92fr);
+  }
+
+  .main-window {
+    inset: 72px 72px 108px 0;
+  }
+
+  .side-card {
+    width: 240px;
+  }
+}
+
 @keyframes float {
   0%,
   100% {
@@ -580,7 +640,11 @@ h3 {
   }
 
   .main-window {
-    inset: 100px 90px 130px 0;
+    inset: 108px 72px 136px 0;
+  }
+
+  .side-card {
+    width: min(250px, 40vw);
   }
 
   .steps-grid {
@@ -594,6 +658,49 @@ h3 {
   .footer {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+@media (max-width: 900px) {
+  .topbar,
+  .hero,
+  .feature-grid,
+  .install-section,
+  .footer {
+    width: 100%;
+  }
+
+  .hero {
+    padding-top: 48px;
+    gap: 22px;
+  }
+
+  .hero-demo {
+    min-height: auto;
+    display: grid;
+    gap: 16px;
+  }
+
+  .floating-card,
+  .main-window,
+  .side-card,
+  .side-card-top,
+  .side-card-bottom {
+    position: static;
+    inset: auto;
+    width: 100%;
+    max-width: 100%;
+    animation: none;
+  }
+
+  .main-window,
+  .side-card {
+    padding: 18px;
+  }
+
+  .install-actions,
+  .manual-inline {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -618,20 +725,7 @@ h3 {
   }
 
   .hero-demo {
-    min-height: auto;
-    display: grid;
-    gap: 16px;
-  }
-
-  .floating-card,
-  .main-window,
-  .side-card,
-  .side-card-top,
-  .side-card-bottom {
-    position: static;
-    inset: auto;
-    width: auto;
-    animation: none;
+    gap: 14px;
   }
 
   .feature,
@@ -647,5 +741,78 @@ h3 {
   .button,
   .nav-pill {
     width: 100%;
+  }
+
+  .history-row,
+  .spec-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --radius-xl: 24px;
+    --radius-md: 16px;
+  }
+
+  .page-shell {
+    padding: 12px;
+  }
+
+  .topbar,
+  .feature,
+  .install-section,
+  .footer {
+    padding: 18px;
+  }
+
+  .brand-lockup {
+    gap: 10px;
+  }
+
+  .brand-mark {
+    width: 46px;
+    height: 46px;
+  }
+
+  .hero-badge {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: clamp(2.3rem, 13vw, 3.2rem);
+    line-height: 0.98;
+  }
+
+  h2 {
+    font-size: clamp(1.7rem, 8vw, 2.2rem);
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  .window-header {
+    font-size: 1rem;
+  }
+
+  .history-row,
+  .step,
+  .manual-build,
+  .install-card {
+    padding: 16px;
+  }
+
+  pre {
+    padding: 14px;
+    border-radius: 14px;
+    font-size: 0.88rem;
   }
 }
