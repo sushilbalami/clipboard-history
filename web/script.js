@@ -1,14 +1,23 @@
 const installCommand = document.getElementById('installCommand')?.textContent?.trim() ?? './scripts/install-app.sh';
-const copyButtons = [
-  document.getElementById('copyInstallCommand'),
-  document.getElementById('copyInstallCommandAlt')
-].filter(Boolean);
+const downloadLink = document.getElementById('downloadCommand')?.textContent?.trim() ??
+  'https://github.com/sushilbalami/clipboard-history/releases/latest/download/Clipboard-History-macOS.zip';
 
-async function copyInstallText(button) {
+const copyButtons = [
+  {
+    button: document.getElementById('copyInstallCommand'),
+    text: installCommand
+  },
+  {
+    button: document.getElementById('copyDownloadLink'),
+    text: downloadLink
+  }
+].filter(({ button }) => Boolean(button));
+
+async function copyInstallText(button, text) {
   const originalLabel = button.textContent;
 
   try {
-    await navigator.clipboard.writeText(installCommand);
+    await navigator.clipboard.writeText(text);
     button.textContent = 'Copied';
   } catch {
     button.textContent = 'Copy failed';
@@ -19,8 +28,8 @@ async function copyInstallText(button) {
   }, 1800);
 }
 
-for (const button of copyButtons) {
-  button.addEventListener('click', () => copyInstallText(button));
+for (const item of copyButtons) {
+  item.button.addEventListener('click', () => copyInstallText(item.button, item.text));
 }
 
 const year = document.getElementById('year');

@@ -1,0 +1,43 @@
+name: Release macOS App
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare scripts
+        run: chmod +x scripts/install-app.sh scripts/build-release-bundle.sh
+
+      - name: Build release bundle
+        run: ./scripts/build-release-bundle.sh
+
+      - name: Compute release metadata
+        id: meta
+        shell: bash
+        run: |
+          stamp="$(date -u +'%Y%m%d-%H%M%S')"
+          short_sha="${GITHUB_SHA::7}"
+          echo "tag=release-${stamp}-${short_sha}" >> "$GITHUB_OUTPUT"
+          echo "name=Clipboard History ${stamp}" >> "$GITHUB_OUTPUT"
+
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.meta.outputs.tag }}
+          name: ${{ steps.meta.outputs.name }}
+          generate_release_notes: true
+          make_latest: true
+          files: |
+            dist/Clipboard-History-macOS.zip

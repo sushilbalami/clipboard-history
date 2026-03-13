@@ -470,6 +470,11 @@ h2 {
   padding: 18px;
 }
 
+.install-actions {
+  display: grid;
+  gap: 12px;
+}
+
 .terminal-head {
   display: flex;
   gap: 7px;
@@ -498,6 +503,27 @@ pre {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
+}
+
+.manual-build {
+  grid-column: 1 / -1;
+  padding: 18px;
+}
+
+.manual-title {
+  margin: 0 0 12px;
+  font-weight: 800;
+}
+
+.manual-inline {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: start;
+}
+
+.manual-inline pre {
+  margin: 0;
 }
 
 .step {
@@ -558,6 +584,10 @@ h3 {
   }
 
   .steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .manual-inline {
     grid-template-columns: 1fr;
   }
 

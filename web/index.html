@@ -30,7 +30,7 @@
             <p class="brand-name">Clipboard History</p>
           </div>
         </div>
-        <a href="#install" class="nav-pill">Install on Mac</a>
+        <a href="https://github.com/sushilbalami/clipboard-history/releases/latest/download/Clipboard-History-macOS.zip" class="nav-pill" id="navDownloadLatest">Download Latest</a>
       </header>
 
       <main>
@@ -46,10 +46,18 @@
               instant search, and optional auto-paste into the app you were just using.
             </p>
             <div class="hero-actions">
-              <a href="#install" class="button button-primary">Install for macOS</a>
-              <button class="button button-secondary" id="copyInstallCommand" type="button">Copy install command</button>
+              <a
+                href="https://github.com/sushilbalami/clipboard-history/releases/latest/download/Clipboard-History-macOS.zip"
+                class="button button-primary"
+                id="downloadLatestHero"
+              >Download for macOS</a>
+              <a
+                href="https://github.com/sushilbalami/clipboard-history/releases/latest"
+                class="button button-secondary"
+                id="viewLatestRelease"
+              >View latest release</a>
             </div>
-            <p class="hero-note">Runs as a background app in <code>/Applications/Clipboard History.app</code>.</p>
+            <p class="hero-note">Downloads the latest GitHub release ZIP and installs as <code>Clipboard History.app</code>.</p>
           </div>
 
           <div class="hero-demo">
@@ -141,10 +149,10 @@
         <section class="install-section glass-panel" id="install">
           <div class="install-copy">
             <p class="section-kicker">Install</p>
-            <h2>Install the app on your Mac in one command.</h2>
+            <h2>Download the latest release, then drag the app into Applications.</h2>
             <p>
-              After cloning or downloading this project, run the installer from the repository root. The script builds a release binary,
-              creates the app bundle, and copies it into your Applications folder.
+              Every push to <code>main</code> publishes a fresh macOS build to GitHub Releases. Download the latest ZIP, extract it,
+              move <code>Clipboard History.app</code> into <code>/Applications</code>, then grant Accessibility if you want auto-paste.
             </p>
           </div>
 
@@ -154,26 +162,41 @@
               <span></span>
               <span></span>
             </div>
-            <pre><code id="installCommand">./scripts/install-app.sh</code></pre>
-            <button class="button button-primary wide" id="copyInstallCommandAlt" type="button">Copy command</button>
+            <pre><code id="downloadCommand">https://github.com/sushilbalami/clipboard-history/releases/latest/download/Clipboard-History-macOS.zip</code></pre>
+            <div class="install-actions">
+              <a
+                href="https://github.com/sushilbalami/clipboard-history/releases/latest/download/Clipboard-History-macOS.zip"
+                class="button button-primary wide"
+                id="downloadLatestInstall"
+              >Download latest build</a>
+              <button class="button button-secondary wide" id="copyDownloadLink" type="button">Copy release link</button>
+            </div>
           </div>
 
           <div class="steps-grid">
             <article class="step glass-inset">
               <span class="step-index">01</span>
-              <h3>Prepare macOS</h3>
-              <p>Use a Mac running macOS 14 or later with Xcode Command Line Tools available for Swift builds.</p>
+              <h3>Download release</h3>
+              <p>Grab the latest <code>Clipboard-History-macOS.zip</code> from GitHub Releases.</p>
             </article>
             <article class="step glass-inset">
               <span class="step-index">02</span>
-              <h3>Run installer</h3>
-              <p>Execute <code>./scripts/install-app.sh</code> from the project root to build and install the app.</p>
+              <h3>Move into Applications</h3>
+              <p>Extract the ZIP and drag <code>Clipboard History.app</code> into <code>/Applications</code>.</p>
             </article>
             <article class="step glass-inset">
               <span class="step-index">03</span>
               <h3>Grant permission</h3>
               <p>Open the app, enable Accessibility if you want auto-paste, and set your preferred global shortcut.</p>
             </article>
+          </div>
+
+          <div class="manual-build glass-inset">
+            <p class="manual-title">Building from source instead?</p>
+            <div class="manual-inline">
+              <pre><code id="installCommand">./scripts/install-app.sh</code></pre>
+              <button class="button button-secondary" id="copyInstallCommand" type="button">Copy source install command</button>
+            </div>
           </div>
         </section>
       </main>
